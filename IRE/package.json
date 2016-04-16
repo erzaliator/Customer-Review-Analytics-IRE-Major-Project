@@ -1,0 +1,8 @@
+{
+	"name" : "my-app",
+	"main" : "index.html",
+	"window" : 
+	{
+		"toolbar" : false
+	}
+}

@@ -1,0 +1,107 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<html>
+	<head>
+		<title>Amazon Crawler</title>
+	<head>
+	<body>
+		<script>
+			window.resizeTo(1280,1024);
+
+			function f() {
+				 var x = document.getElementById("iHateIRE").value;
+				 var y = document.getElementById("iReallyHateIRE").value;
+     				 alert("To start crawling close this message and wait until you get done on your terminal");
+				 var fs = require('fs'),
+     					spawn = require('child_process').spawnSync;
+				 var ok = 1;
+				 var child = spawn('python', ["./src/amazon_crawler.py", x, y], {
+				   //detached: true,
+				   stdio: 'inherit'
+				 });	
+				 alert("File "+y+" has been created");
+				 child.unref();
+		
+				//close();
+			}
+			// function f() {
+			// 	 var x = document.getElementById("iHateIRE").value;
+			// 	 var y = document.getElementById("iReallyHateIRE").value;
+   //   				 alert("To start crawling close this message and wait...");
+			// 	 var fs = require('fs'),
+   //   					spawn = require('child_process').spawn,
+   //   					out = fs.openSync('./out.log', 'a'),
+   //   					err = fs.openSync('./out.log', 'a');
+
+			// 	 var child = spawn('python', ["./src/amazon_crawler.py", x, y], {
+			// 	   //detached: true,
+			// 	   stdio: 'inherit'
+			// 	 });
+
+			// 	 //child.unref();
+			// 	 //close();
+			// 	 // alert("Done with file");
+			// 	child.on('exit', (code) => {
+  	// 				console.log(`Child exited with code ${code}`);
+  	// 				alert("File ",y," has been created");
+			// 	});
+			// }
+		</script>
+
+		<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">IRE</a>
+	      <br>
+	      <h3>Phase 1</h3>
+	    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    
+  </div><!-- /.container-fluid -->
+</nav>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h1>Crawling</h1>
+				<br>
+				<p>Enter the search query</p> 
+				<input id="iHateIRE">
+				<p>Enter out file name</p>
+				<input id="iReallyHateIRE">
+				<br/><br/>
+				<button type="button" class="btn btn-default" onclick="f()">Button</button>
+			</div>
+		</div>
+	</body>
+
+	<style>
+	.navbar {
+		height: 100px;
+		padding-top: 20px;
+	}
+	.navbar a {
+    	font-size: 500%;
+	}
+	.navbar h3 {
+    	font-size: 100%;
+    	text-align: right;
+    	/*float: right;*/
+    	position: absolute;
+    	right: 10px;
+	}
+	.panel-body {
+		padding-left: 150px;
+	}
+	.panel {
+		margin-top: 50px;
+	}
+	</style>
+</html>
